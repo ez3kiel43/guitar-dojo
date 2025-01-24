@@ -16,7 +16,6 @@ export default function Menu() {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggleMenu = () => {
-		// console.log('toggle');
 		setIsOpen(!isOpen);
 	};
 
@@ -33,7 +32,9 @@ export default function Menu() {
 				></Image>
 			</button>
 			<nav
-				className={`absolute flex flex-col-reverse bg-transparent gap-4 font-serif text-xl right-4 bottom-40`}
+				className={`absolute flex flex-col-reverse bg-transparent gap-4 font-serif text-xl right-4 bottom-40 ${
+					isOpen ? 'visible' : 'invisible'
+				}`}
 			>
 				{screens.map((t, i) => {
 					return (

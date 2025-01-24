@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+#data
+guitar-dojo-7596e-firebase-adminsdk-fbsvc-6805acd853.json
+chords.json

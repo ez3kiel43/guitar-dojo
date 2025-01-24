@@ -1,164 +1,78 @@
 'use client';
 
-import drawChord from '../modules/draw_chords';
-import svgGroup from '@/components/svg_group';
-import { useState } from 'react';
+import ChordTemplate from '@/components/chord_template';
+import { useState, useEffect } from 'react';
 
 export default function AddChords() {
-	const [coords, setCoords] = useState([]);
-
-	const chord = {
-		name: '',
+	const [chord, setChord] = useState({
+		cName: '',
 		strings: [0, 0, 0, 0, 0, 0],
 		fret: 0,
+	});
+
+	const getClickPos = e => {
+		const templateSize = {};
+		templateSize.top = e.target
+			.closest('svg')
+			.getBoundingClientRect().top;
+		templateSize.left = e.target
+			.closest('svg')
+			.getBoundingClientRect().left;
+		templateSize.right = e.target
+			.closest('svg')
+			.getBoundingClientRect().right;
+		templateSize.bottom = e.target
+			.closest('svg')
+			.getBoundingClientRect().bottom;
+		let click = {
+			x: e.clientX,
+			y: e.clientY,
+		};
+		let ratioX = (templateSize.right - templateSize.left) / 240;
+		let ratioY = (templateSize.bottom - templateSize.top) / 360;
+		// console.log(templateSize);
+		// console.log(click);
+		let string = Math.floor((click.x - templateSize.left) / ratioX / 40);
+
+		let fret = Math.round((click.y - templateSize.top) / ratioY / 60);
+		return { x: string, y: fret };
+	};
+
+	const handleClick = e => {
+		let coords = getClickPos(e);
+		console.log(coords);
+		let newStrings = chord.strings;
+		// console.log(newStrings);
+
+		if (coords.y == 0) {
+			if (newStrings[coords.x] == 0) {
+				newStrings[coords.x] = -1;
+			} else {
+				newStrings[coords.x] = 0;
+			}
+		} else {
+			newStrings[coords.x] = coords.y;
+		}
+		setChord({
+			...coords,
+			strings: [...newStrings],
+		});
 	};
 
 	return (
-		<main>
-			<svg
-				id="template"
-				data-name="template"
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 240 360"
-				className="w-9/12 mx-auto"
-				onClick={e => {
-					const templateSize = {};
-					templateSize.top =
-						e.target.getBoundingClientRect().top;
-					templateSize.left =
-						e.target.getBoundingClientRect().left;
-					let click = {
-						x: e.clientX,
-						y: e.clientY,
-					};
-					console.log(templateSize);
-					let string = Math.floor(
-						(click.x - templateSize.left) / 40
-					);
-
-					let fret = Math.floor(
-						(click.y - templateSize.top) / 60
-					);
-
-					if (fret == 0) {
-						if (chord.strings[string] == 0) {
-							chord.strings[string] = -1;
-						} else {
-							chord.strings[string] = 0;
-						}
-					} else {
-						chord.strings[string] = fret;
-					}
-
-					console.log(chord);
+		<main className="w-9/12 mx-auto">
+			<label htmlFor="chord_name" className="block w-9/12 mt-2">
+				Chord Name:
+			</label>
+			<input
+				id="chord_name"
+				name="chord_name"
+				className="my-3 border-navy border-2 rounded-md w-6/12"
+				onChange={e => {
+					setChord({ ...chord, cName: e.target.value });
 				}}
-			>
-				<line
-					x1="20"
-					y1="36"
-					x2="224"
-					y2="36"
-					fill="none"
-					stroke="#3b3561"
-					strokeWidth="8"
-				/>
-				<line
-					x1="20"
-					y1="98"
-					x2="224"
-					y2="98"
-					fill="none"
-					stroke="#3b3561"
-					strokeWidth="4"
-				/>
-				<line
-					x1="20"
-					y1="158"
-					x2="224"
-					y2="158"
-					fill="none"
-					stroke="#3b3561"
-					strokeWidth="4"
-				/>
-				<line
-					x1="20"
-					y1="218"
-					x2="224"
-					y2="218"
-					fill="none"
-					stroke="#3b3561"
-					strokeWidth="4"
-				/>
-				<line
-					x1="20"
-					y1="278"
-					x2="224"
-					y2="278"
-					fill="none"
-					stroke="#3b3561"
-					strokeWidth="4"
-				/>
-				<line
-					x1="20"
-					y1="338"
-					x2="224"
-					y2="338"
-					fill="none"
-					stroke="#3b3561"
-					strokeWidth="4"
-				/>
-				<line
-					x1="182"
-					y1="38"
-					x2="182"
-					y2="356"
-					fill="none"
-					stroke="#3b3561"
-				/>
-				<line
-					x1="222"
-					y1="38"
-					x2="222"
-					y2="356"
-					fill="none"
-					stroke="#3b3561"
-				/>
-				<line
-					x1="102"
-					y1="38"
-					x2="102"
-					y2="356"
-					fill="none"
-					stroke="#3b3561"
-				/>
-				<line
-					x1="62"
-					y1="38"
-					x2="62"
-					y2="356"
-					fill="none"
-					stroke="#3b3561"
-				/>
-				<line
-					x1="22"
-					y1="38"
-					x2="22"
-					y2="356"
-					fill="none"
-					stroke="#3b3561"
-				/>
-				<line
-					x1="142"
-					y1="38"
-					x2="142"
-					y2="356"
-					fill="none"
-					stroke="#3b3561"
-				/>
-				<svgGroup code={coords.muted} type="muted" />
-				<svgGroup code={coords.open} type="open" />
-				<svgGroup code={coords.pressed} type="pressed" />
-			</svg>
+			/>
+			<ChordTemplate clickFn={handleClick} chordData={chord} />
 		</main>
 	);
 }
