@@ -22,19 +22,7 @@ export default async function RootLayout({ children }) {
 			<body
 				className={`${solway.variable}  antialiased bg-white max-h-screen`}
 			>
-				<ChordsProvider>
-					<Header></Header>
-					{children}
-					<footer className="bg-navy h-28 fixed bottom-0 w-screen">
-						<Image
-							src="/guitar_dojo_logo.png"
-							width={175}
-							height={100}
-							alt="Guitar Dojo Logo"
-						></Image>
-						<Menu />
-					</footer>
-				</ChordsProvider>
+				{children}
 			</body>
 		</html>
 	);

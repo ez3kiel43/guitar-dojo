@@ -11,12 +11,10 @@ export default function Header() {
 				return 'Account';
 			case '/add':
 				return 'Add a Chord';
-			case '/learn':
-				return 'Learn Chords';
 			case '/time':
 				return 'Time Trial';
-			case '/write':
-				return 'Write Songs';
+			default:
+				return 'Learn Chords';
 		}
 	};
 
