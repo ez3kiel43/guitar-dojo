@@ -7,11 +7,11 @@ export default function Header() {
 
 	const getHeaderText = () => {
 		switch (pathname) {
-			case '/account':
+			case '/user_account/account':
 				return 'Account';
-			case '/add':
+			case '/user_account/add':
 				return 'Add a Chord';
-			case '/time':
+			case '/user_account/time':
 				return 'Time Trial';
 			default:
 				return 'Learn Chords';

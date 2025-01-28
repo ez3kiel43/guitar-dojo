@@ -1,9 +1,5 @@
 import { Solway } from 'next/font/google';
 import './globals.css';
-import Menu from '@/components/menu';
-import Image from 'next/image';
-import Header from '@/components/header';
-import { ChordsProvider } from '@/context/chords_context';
 
 const solway = Solway({
 	variable: '--font-solway',
@@ -20,7 +16,7 @@ export default async function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body
-				className={`${solway.variable}  antialiased bg-white max-h-screen`}
+				className={`${solway.variable}  antialiased bg-white max-h-screen w-screen overflow-hidden`}
 			>
 				{children}
 			</body>

@@ -1,34 +1,25 @@
-import { auth, db } from '@/lib/firebaseconfig';
-import {
-	createUserWithEmailAndPassword,
-	signInWithEmailAndPassword,
-} from 'firebase/auth';
+'use client';
+
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+const NoSSRForm = dynamic(() => import('../components/login_form.js'), {
+	ssr: false,
+});
 
 export default function SignIn() {
-	signInWithEmailAndPassword(auth, email, password)
-		.then(userCredential => {
-			// Signed in
-			const user = userCredential.user;
-			// ...
-		})
-		.catch(error => {
-			const errorCode = error.code;
-			const errorMessage = error.message;
-		});
-
 	return (
-		<main>
-			<form
-				onSubmit={() => {
-					console.log('submitted');
-				}}
-			>
-				<label htmlFor="email">Email:</label>
-				<input type="email" id="email" name="email" />
-				<label htmlFor="password">Password:</label>
-				<input type="password" id="password" name="password" />
-				<input type="submit">Login</input>
-			</form>
-		</main>
+		<>
+			<header className="bg-navy h-28 w-45 mx-auto text-center">
+				<Image
+					src="/guitar_dojo_logo.png"
+					width={175}
+					height={100}
+					alt="Guitar Dojo Logo"
+					className="mx-auto"
+				></Image>
+			</header>
+			<NoSSRForm />
+		</>
 	);
 }

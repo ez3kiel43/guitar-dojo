@@ -5,10 +5,10 @@ import { useState } from 'react';
 import NavBtn from './nav_btn';
 
 const screens = [
-	{ title: 'Account', path: 'account' },
-	{ title: 'Add A Chord', path: 'add' },
-	{ title: 'Learn Chords', path: '/' },
-	{ title: 'Time Trial', path: 'time' },
+	{ title: 'Account', path: 'user_account/account' },
+	{ title: 'Add A Chord', path: 'user_account/add' },
+	{ title: 'Learn Chords', path: 'user_account/' },
+	{ title: 'Time Trial', path: 'user_account/time' },
 ];
 
 export default function Menu() {
@@ -22,7 +22,7 @@ export default function Menu() {
 		<>
 			<button className="absolute bottom-20 right-4 bg-sand rounded-full w-16 aspect-square">
 				<Image
-					src={!isOpen ? `/open_btn.svg` : `close_btn.svg`}
+					src={!isOpen ? `/open_btn.svg` : `/close_btn.svg`}
 					width={100}
 					height={100}
 					alt="toggle menu"
