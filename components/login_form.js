@@ -1,5 +1,6 @@
 'use client';
 import { auth, db } from '@/lib/firebaseconfig.js';
+import { setDoc, doc } from 'firebase/firestore';
 import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
@@ -51,17 +52,39 @@ export default function LoginOrSignup() {
 		) {
 			return;
 		}
-		createUserWithEmailAndPassword(auth, email, password)
+		createUserWithEmailAndPassword(auth, email, pass)
 			.then(userCredential => {
 				// Signed up
 				const user = userCredential.user;
 				console.log(`${userCredential}: signed up`);
+				addUserInfo(user.uid);
 			})
 			.catch(error => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
-				alert(`code:${errorCode} msg:${errorMessage}`);
+				errorCode = error.code;
+				errorMessage = error.message;
+
+				if (errorCode === 'auth/network-request-failed') {
+					alert(
+						'Network error. Please check your internet connection.'
+					);
+				} else if (errorCode === 'auth/email-already-in-use') {
+					alert('This email is already in use.');
+				} else {
+					alert(`Error: ${errorCode} - ${errorMessage}`);
+				}
+
+				console.error(
+					`SignUp Error: ${errorCode} - ${errorMessage}`
+				);
 			});
+	};
+
+	const addUserInfo = async uid => {
+		await setDoc(doc(db, 'users', uid), {
+			name_first: firstName,
+			name_last: lastName,
+			username: username,
+		});
 	};
 
 	useEffect(() => {
