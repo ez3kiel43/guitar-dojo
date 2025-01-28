@@ -2,7 +2,7 @@
 import ChordTemplate from '@/components/chord_template';
 import SelectionMenu from '@/components/chord_selection';
 import { useChords } from '@/context/chords_context';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function LearnChords({}) {
 	const { chords, loaded } = useChords();

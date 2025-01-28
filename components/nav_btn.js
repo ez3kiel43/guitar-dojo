@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export default function NavBtn({ title, closed, delay, closeFn, path }) {
-	console.log(path);
+	// console.log(path);
 	return (
 		<Link
 			href={`/${path}`}
