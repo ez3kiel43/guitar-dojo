@@ -61,7 +61,10 @@ export default function AddChords() {
 
 	return (
 		<main className="w-9/12 mx-auto">
-			<label htmlFor="chord_name" className="block w-9/12 mt-2">
+			<label
+				htmlFor="chord_name"
+				className="block w-9/12 mt-2 text-navy"
+			>
 				Chord Name:
 			</label>
 			<input

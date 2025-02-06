@@ -1,48 +1,82 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { collection, getDocs, orderBy, query } from 'firebase/firestore';
+import {
+	collection,
+	getDocs,
+	orderBy,
+	query,
+	getDoc,
+	doc,
+} from 'firebase/firestore';
 import { db } from '../lib/firebaseconfig.js';
 import { auth } from '../lib/firebaseconfig.js';
 
-const ChordsContext = createContext();
+const userInfoContext = createContext();
 
-export const ChordsProvider = ({ children }) => {
+export const UserInfoProvider = ({ children }) => {
 	const user = auth.currentUser;
-	const [chords, setChords] = useState([]);
+	const [info, setInfo] = useState([]);
 	const [loaded, setLoaded] = useState(false);
 
 	useEffect(() => {
 		if (user !== null) {
 			const id = user.uid;
-			const fetchChords = async () => {
+			const fetchInfo = async () => {
 				const GeneralChordQ = query(
 					collection(db, 'chords-general'),
 					orderBy('cName')
 				);
 				const customChordQ = query(
-					db,
-					'users',
-					uid,
-					'chords-custom'
+					collection(db, 'users', id, 'chords-custom')
 				);
+				const userInfoQ = doc(db, 'users', id);
 
 				try {
 					const querySnapshot = await getDocs(GeneralChordQ);
-					const customQuerySnapshot = await getDocs(
+					const userQuerySnapshot = await getDoc(userInfoQ);
+					const customChordSnapshot = await getDocs(
 						customChordQ
 					);
-					const chordsData = [];
+					const userData = {
+						a: [],
+						b: [],
+						c: [],
+						d: [],
+						e: [],
+						f: [],
+						g: [],
+						custom: [],
+						email: '',
+						fName: '',
+						lName: '',
+						uName: '',
+					};
 
 					querySnapshot.forEach(doc => {
-						chordsData.push({ id: doc.id, ...doc.data() });
+						// console.log(doc.data().cName.split('')[0]);
+						userData[
+							doc.data().cName.split('')[0].toLowerCase()
+						].push({
+							id: doc.id,
+							...doc.data(),
+						});
 					});
 
-					customQuerySnapshot.forEach(doc => {
-						chordsData.push({ id: doc.id, ...doc.data() });
+					// console.log(userQuerySnapshot.data());
+					customChordSnapshot.forEach(doc => {
+						userData.custom.push({
+							id: doc.id,
+							...doc.data(),
+						});
 					});
 
-					setChords(chordsData);
+					userData.email = userQuerySnapshot.data().email;
+					userData.fName = userQuerySnapshot.data().name_first;
+					userData.lName = userQuerySnapshot.data().name_last;
+					userData.uName = userQuerySnapshot.data().uasername;
+
+					setInfo(userData);
 				} catch (error) {
 					console.error('Error fetching chords:', error);
 				} finally {
@@ -50,15 +84,15 @@ export const ChordsProvider = ({ children }) => {
 				}
 			};
 
-			fetchChords();
+			fetchInfo();
 		}
 	}, []);
 
 	return (
-		<ChordsContext.Provider value={{ chords, loaded }}>
+		<userInfoContext.Provider value={{ info, loaded }}>
 			{children}
-		</ChordsContext.Provider>
+		</userInfoContext.Provider>
 	);
 };
 
-export const useChords = () => useContext(ChordsContext);
+export const useInfo = () => useContext(userInfoContext);

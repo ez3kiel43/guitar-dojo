@@ -1,4 +1,4 @@
-import { ChordsProvider } from '@/context/chords_context';
+import { UserInfoProvider } from '@/context/chords_context';
 import Menu from '@/components/menu';
 import Image from 'next/image';
 import Header from '@/components/header';
@@ -9,7 +9,7 @@ export default function UserAccount({ children }) {
 	return (
 		<>
 			<Header></Header>
-			<ChordsProvider>{children}</ChordsProvider>
+			<UserInfoProvider>{children}</UserInfoProvider>
 
 			<footer className="bg-navy h-28 fixed bottom-0 w-screen">
 				<Image

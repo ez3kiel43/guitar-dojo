@@ -84,6 +84,7 @@ export default function LoginOrSignup() {
 			name_first: firstName,
 			name_last: lastName,
 			username: username,
+			email: email,
 		});
 	};
 
@@ -115,7 +116,7 @@ export default function LoginOrSignup() {
 							type="name_first"
 							id="name_first"
 							name="name_first"
-							className="w-3/5 h-8 text-lg block rounded-md mx-auto p-2"
+							className="w-3/5 h-8 text-lg block rounded-md mx-auto p-2 text-navy"
 							autoComplete="off"
 							onChange={e => {
 								setFirstName(e.target.value);
@@ -131,7 +132,7 @@ export default function LoginOrSignup() {
 							type="name_last"
 							id="name_last"
 							name="name_last"
-							className="w-3/5 h-8 text-lg block rounded-md mx-auto p-2"
+							className="w-3/5 h-8 text-lg block rounded-md mx-auto p-2 text-navy"
 							autoComplete="off"
 							onChange={e => {
 								setLastName(e.target.value);
@@ -147,7 +148,7 @@ export default function LoginOrSignup() {
 							type="username"
 							id="username"
 							name="username"
-							className="w-3/5 h-8 text-lg block rounded-md mx-auto p-2"
+							className="w-3/5 h-8 text-lg block rounded-md mx-auto p-2 text-navy"
 							autoComplete="off"
 							onChange={e => {
 								setUsername(e.target.value);
@@ -168,7 +169,7 @@ export default function LoginOrSignup() {
 					type="email"
 					id="email"
 					name="email"
-					className="w-3/5 h-8 text-lg block rounded-md mx-auto p-2"
+					className="w-3/5 h-8 text-lg block rounded-md mx-auto p-2 text-navy"
 					autoComplete="off"
 					onChange={e => {
 						setEmail(e.target.value);
@@ -184,7 +185,7 @@ export default function LoginOrSignup() {
 					type="password"
 					id="password"
 					name="password"
-					className="w-3/5 h-8 text-lg rounded-md block mx-auto p-2"
+					className="w-3/5 h-8 text-lg rounded-md block mx-auto p-2 text-navy"
 					autoComplete="off"
 					onChange={e => {
 						setPass(e.target.value);

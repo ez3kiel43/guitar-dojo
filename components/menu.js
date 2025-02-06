@@ -20,7 +20,7 @@ export default function Menu() {
 
 	return (
 		<>
-			<button className="absolute bottom-20 right-4 bg-sand rounded-full w-16 aspect-square">
+			<button className="absolute bottom-20 right-4 bg-sand rounded-full w-16 aspect-square z-20">
 				<Image
 					src={!isOpen ? `/open_btn.svg` : `/close_btn.svg`}
 					width={100}
@@ -31,7 +31,7 @@ export default function Menu() {
 				></Image>
 			</button>
 			<nav
-				className={`absolute flex flex-col-reverse bg-transparent gap-4 font-serif text-xl right-4 bottom-40 ${
+				className={`absolute flex flex-col-reverse bg-transparent gap-4 font-serif text-xl right-4 bottom-40 z-20 ${
 					isOpen ? 'visible' : 'invisible'
 				}`}
 			>
@@ -48,6 +48,12 @@ export default function Menu() {
 					);
 				})}
 			</nav>
+			<div
+				className={`w-screen h-screen absolute bg-navy bottom-0 z-10 ${
+					isOpen ? `opacity-80` : `opacity-0 pointer-events-none`
+				} transition-all`}
+				onClick={toggleMenu}
+			></div>
 		</>
 	);
 }

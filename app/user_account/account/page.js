@@ -2,9 +2,11 @@
 import { signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebaseconfig';
 import { useRouter } from 'next/navigation';
+import { useInfo } from '@/context/chords_context';
 
 export default function Account() {
 	const router = useRouter();
+	const { info, loaded } = useInfo;
 
 	const handleSignOut = async () => {
 		try {
@@ -24,7 +26,7 @@ export default function Account() {
 					type="text"
 					readOnly={true}
 					value={'Ezra'}
-					className="font-normal w-1/2 mx-2"
+					className="font-normal w-1/2 mx-2 text-navy"
 				/>
 			</label>
 
@@ -34,7 +36,7 @@ export default function Account() {
 					type="text"
 					readOnly={true}
 					value={'Evans'}
-					className="font-normal w-1/2 mx-2"
+					className="font-normal w-1/2 mx-2 text-navy"
 				/>
 			</label>
 
