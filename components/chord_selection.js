@@ -15,7 +15,9 @@ export default function SelectionMenu({ data, changeFn, boxClickFn }) {
 				id="chord-selection"
 				name="chord-selection"
 				className="bg-sand text-navy w-2/5 h-8 m-2 font-serif text-lg"
-				onChange={changeFn}
+				onChange={e => {
+					changeFn(e.target.value);
+				}}
 			>
 				<option value={'a'}>A</option>
 				<option value={'b'}>B</option>

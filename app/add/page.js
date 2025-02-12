@@ -1,7 +1,7 @@
 'use client';
 
 import ChordTemplate from '@/components/chord_template';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function AddChords() {
 	const [chord, setChord] = useState({
