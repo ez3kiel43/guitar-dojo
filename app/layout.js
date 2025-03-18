@@ -1,5 +1,8 @@
 import { Solway } from 'next/font/google';
 import './globals.css';
+import Menu from '@/components/menu';
+import Header from '@/components/header';
+import Image from 'next/image';
 
 const solway = Solway({
 	variable: '--font-solway',
@@ -18,7 +21,17 @@ export default async function RootLayout({ children }) {
 			<body
 				className={`${solway.variable}  antialiased bg-white max-h-screen w-screen overflow-hidden`}
 			>
+				<Header></Header>
 				{children}
+				<footer className="bg-navy h-28 fixed bottom-0 w-screen">
+					<Image
+						src="/guitar_dojo_logo.png"
+						width={175}
+						height={100}
+						alt="Guitar Dojo Logo"
+					></Image>
+					<Menu />
+				</footer>
 			</body>
 		</html>
 	);

@@ -1,11 +1,9 @@
 'use client';
-import Image from 'next/image';
 import ChordTemplate from '@/components/chord_template';
 import SelectionMenu from '@/components/chord_selection';
-import Header from '@/components/header';
+
 import { useState } from 'react';
 import Info from '@/lib/chords.json';
-import Menu from '@/components/menu';
 
 export default function LearnChords() {
 	const [chords, setChords] = useState([
@@ -35,8 +33,7 @@ export default function LearnChords() {
 
 	return (
 		<>
-			<Header></Header>
-			<main className="w-full mx-auto py-12 overflow-hidden ">
+			<main className="w-full mx-auto py-12 overflow-hidden md:flex">
 				<section>
 					<article className="w-3/5 mx-auto">
 						<ChordTemplate
@@ -56,15 +53,6 @@ export default function LearnChords() {
 					</article>
 				</section>
 			</main>
-			<footer className="bg-navy h-28 fixed bottom-0 w-screen">
-				<Image
-					src="/guitar_dojo_logo.png"
-					width={175}
-					height={100}
-					alt="Guitar Dojo Logo"
-				></Image>
-				<Menu />
-			</footer>
 		</>
 	);
 }

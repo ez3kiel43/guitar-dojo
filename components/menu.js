@@ -5,10 +5,9 @@ import { useState } from 'react';
 import NavBtn from './nav_btn';
 
 const screens = [
-	{ title: 'Account', path: 'user_account/account' },
-	{ title: 'Add A Chord', path: 'user_account/add' },
-	{ title: 'Learn Chords', path: 'user_account/' },
-	{ title: 'Time Trial', path: 'user_account/time' },
+	{ title: 'Add A Chord', path: 'add' },
+	{ title: 'Learn Chords', path: '/' },
+	{ title: 'Time Trial', path: 'time' },
 ];
 
 export default function Menu() {

@@ -1,8 +1,6 @@
-'use client';
-
 import ChordBox from './chord_box';
 
-export default function SelectionMenu({ data, changeFn, boxClickFn }) {
+export default function SelectionMenu({ data, boxClickFn, changeFn }) {
 	return (
 		<section className="h-56">
 			<label
@@ -26,7 +24,6 @@ export default function SelectionMenu({ data, changeFn, boxClickFn }) {
 				<option value={'e'}>E</option>
 				<option value={'f'}>F</option>
 				<option value={'g'}>G</option>
-				<option value={'custom'}>Custom</option>
 			</select>
 			<article className="flex justify-start flex-wrap">
 				{data.map((chord, i) => {

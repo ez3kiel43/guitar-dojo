@@ -60,22 +60,24 @@ export default function AddChords() {
 	};
 
 	return (
-		<main className="w-9/12 mx-auto">
-			<label
-				htmlFor="chord_name"
-				className="block w-9/12 mt-2 text-navy"
-			>
-				Chord Name:
-			</label>
-			<input
-				id="chord_name"
-				name="chord_name"
-				className="my-3 border-navy border-2 rounded-md w-6/12"
-				onChange={e => {
-					setChord({ ...chord, cName: e.target.value });
-				}}
-			/>
-			<ChordTemplate clickFn={handleClick} chordData={chord} />
+		<main className="w-9/12 mx-auto md:flex">
+			<section>
+				<label
+					htmlFor="chord_name"
+					className="block w-9/12 mt-2 text-navy"
+				>
+					Chord Name:
+				</label>
+				<input
+					id="chord_name"
+					name="chord_name"
+					className="my-3 border-navy border-2 rounded-md w-6/12"
+					onChange={e => {
+						setChord({ ...chord, cName: e.target.value });
+					}}
+				/>
+				<ChordTemplate clickFn={handleClick} chordData={chord} />
+			</section>
 		</main>
 	);
 }
