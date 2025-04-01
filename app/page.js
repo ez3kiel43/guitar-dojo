@@ -33,9 +33,9 @@ export default function LearnChords() {
 
 	return (
 		<>
-			<main className="w-full mx-auto py-12 overflow-hidden max-w-sm">
-				<section>
-					<article className="w-3/5 mx-auto">
+			<main className="w-full mx-auto py-12 overflow-hidden max-w-sm md:max-w-full">
+				<section className="md:flex md:w-full">
+					<article className="w-3/5 mx-auto ">
 						<ChordTemplate
 							chordData={chords[currentChord]}
 							clickFn={null}

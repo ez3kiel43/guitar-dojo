@@ -7,7 +7,7 @@ export default function ChordTemplate({ clickFn, chordData }) {
 			data-name="template"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 240 360"
-			className="w-full mx-auto"
+			className="w-full mx-auto max-h-96"
 			onClick={clickFn}
 		>
 			<line
