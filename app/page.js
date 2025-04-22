@@ -1,11 +1,15 @@
 'use client';
-import ChordTemplate from '@/components/chord_template';
-import SelectionMenu from '@/components/chord_selection';
+import ChordTemplate from '@/components/ChordTemplate';
+import SelectionMenu from '@/components/ChordSelection';
 
 import { useState } from 'react';
 import Info from '@/lib/chords.json';
+import supabase from '@/lib/supabase';
+import { useAuth } from '@/context/AuthContext';
 
 export default function LearnChords() {
+	const { session, loading } = useAuth();
+
 	const [chords, setChords] = useState([
 		{ cName: 'A', strings: [-1, 0, 2, 2, 2, 0], fret: 0 },
 		{ cName: 'Am', strings: [-1, 0, 2, 2, 1, 0], fret: 0 },
@@ -20,14 +24,38 @@ export default function LearnChords() {
 		setCurrentChord(index);
 	};
 
-	const changeFamily = letter => {
+	const changeFamily = async letter => {
 		setCurrentChord(0);
 		let tempArr = [];
-		Info.map(c => {
-			if (c.cName[0] === letter.toUpperCase()) {
-				tempArr.push(c);
+		if (letter == 'custom') {
+			console.log(session.user.id);
+			const { data, error } = await supabase
+				.from('chords')
+				.select('*')
+				.eq('user_id', session.user.id);
+
+			if (error) {
+				alert(error.message);
 			}
-		});
+
+			if (data) {
+				console.log(data);
+				data.forEach(c => {
+					console.log(c);
+					tempArr.push({
+						cName: c.chord_name,
+						strings: c.strings,
+						fret: c.fret,
+					});
+				});
+			}
+		} else {
+			Info.map(c => {
+				if (c.cName[0] === letter.toUpperCase()) {
+					tempArr.push(c);
+				}
+			});
+		}
 		setChords(tempArr);
 	};
 
@@ -37,7 +65,7 @@ export default function LearnChords() {
 				<section className="md:flex md:w-full">
 					<article className="w-3/5 mx-auto ">
 						<ChordTemplate
-							chordData={chords[currentChord]}
+							chordData={chords[currentChord].strings}
 							clickFn={null}
 						/>
 						<h2 className="font-serif text-navy text-3xl mx-auto my-2 text-center">

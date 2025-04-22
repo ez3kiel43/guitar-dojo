@@ -2,12 +2,13 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import NavBtn from './nav_btn';
+import NavBtn from './NavBtn';
 
 const screens = [
 	{ title: 'Add A Chord', path: 'add' },
 	{ title: 'Learn Chords', path: '/' },
 	{ title: 'Time Trial', path: 'time' },
+	{ title: 'Account Info', path: 'account' },
 ];
 
 export default function Menu() {

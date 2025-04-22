@@ -1,14 +1,11 @@
 'use client';
 
-import ChordTemplate from '@/components/chord_template';
+import ChordTemplate from '@/components/ChordTemplate';
+import SaveChord from '@/components/SaveChord';
 import { useState } from 'react';
 
 export default function AddChords() {
-	const [chord, setChord] = useState({
-		cName: '',
-		strings: [0, 0, 0, 0, 0, 0],
-		fret: 0,
-	});
+	const [strings, setStrings] = useState([0, 0, 0, 0, 0, 0]);
 
 	const getClickPos = e => {
 		const templateSize = {};
@@ -41,7 +38,7 @@ export default function AddChords() {
 	const handleClick = e => {
 		let coords = getClickPos(e);
 		console.log(coords);
-		let newStrings = chord.strings;
+		let newStrings = strings;
 		// console.log(newStrings);
 
 		if (coords.y == 0) {
@@ -53,31 +50,15 @@ export default function AddChords() {
 		} else {
 			newStrings[coords.x] = coords.y;
 		}
-		setChord({
-			...coords,
-			strings: [...newStrings],
-		});
+		setStrings([...newStrings]);
 	};
 
 	return (
 		<main className="w-9/12 mx-auto md:flex">
-			<section>
-				<label
-					htmlFor="chord_name"
-					className="block w-9/12 mt-2 text-navy"
-				>
-					Chord Name:
-				</label>
-				<input
-					id="chord_name"
-					name="chord_name"
-					className="my-3 border-navy border-2 rounded-md w-6/12"
-					onChange={e => {
-						setChord({ ...chord, cName: e.target.value });
-					}}
-				/>
-				<ChordTemplate clickFn={handleClick} chordData={chord} />
+			<section className="my-4">
+				<ChordTemplate clickFn={handleClick} chordData={strings} />
 			</section>
+			<SaveChord stringsData={strings} />
 		</main>
 	);
 }

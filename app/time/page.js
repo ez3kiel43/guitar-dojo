@@ -1,9 +1,9 @@
 'use client';
-import SelectionMenu from '@/components/chord_selection';
-import ChordBox from '@/components/chord_box';
+import SelectionMenu from '@/components/ChordSelection';
+import ChordBox from '@/components/ChordBox';
 import { useState } from 'react';
 import Info from '@/lib/chords.json';
-import ChordTemplate from '@/components/chord_template';
+import ChordTemplate from '@/components/ChordTemplate';
 
 export default function TimeTrial() {
 	const [list, setList] = useState([]);

@@ -11,6 +11,8 @@ export default function Header() {
 				return 'Add a Chord';
 			case '/time':
 				return 'Time Trial';
+			case '/account':
+				return 'Account Info';
 			default:
 				return 'Learn Chords';
 		}

@@ -1,4 +1,4 @@
-import RenderSymbols from '@/components/draw_chord';
+import RenderSymbols from '@/components/DrawChord';
 
 export default function ChordTemplate({ clickFn, chordData }) {
 	return (
@@ -112,7 +112,7 @@ export default function ChordTemplate({ clickFn, chordData }) {
 				fill="none"
 				stroke="#3b3561"
 			/>
-			<RenderSymbols strings={chordData.strings} />
+			<RenderSymbols strings={chordData} />
 		</svg>
 	);
 }
