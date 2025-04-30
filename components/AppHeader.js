@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 
-export default function Header() {
+export default function AppHeader() {
 	const pathname = usePathname();
 
 	const getHeaderText = () => {

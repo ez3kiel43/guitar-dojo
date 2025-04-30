@@ -11,7 +11,7 @@ const screens = [
 	{ title: 'Account Info', path: 'account' },
 ];
 
-export default function Menu() {
+export default function AppMenu() {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggleMenu = () => {

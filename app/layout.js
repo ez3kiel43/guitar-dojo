@@ -1,7 +1,7 @@
 import { Solway } from 'next/font/google';
 import './globals.css';
-import Menu from '../components/Menu';
-import Header from './../components/Header';
+import AppMenu from '../components/AppMenu';
+import AppHeader from '../components/AppHeader';
 import Image from 'next/image';
 import { AuthProvider } from '@/context/AuthContext';
 
@@ -25,7 +25,7 @@ export default async function RootLayout({ children }) {
 			<body
 				className={`${solway.variable}  antialiased bg-white max-h-screen w-screen overflow-hidden`}
 			>
-				<Header></Header>
+				<AppHeader></AppHeader>
 				<AuthProvider>{children}</AuthProvider>
 				<footer className="bg-navy h-28 fixed bottom-0 w-screen">
 					<Image
@@ -36,7 +36,7 @@ export default async function RootLayout({ children }) {
 						className="w-auto h-full"
 						priority
 					></Image>
-					<Menu />
+					<AppMenu />
 				</footer>
 			</body>
 		</html>
