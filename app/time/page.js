@@ -129,103 +129,116 @@ export default function TimeTrial() {
 					</section>
 				</main>
 			) : (
-				<main className="w-10/12 mx-auto py-12 overflow-hidden relative md:flex">
-					<section>
-						<SelectionMenu
-							data={chords}
-							boxClickFn={addToList}
-							changeFn={changeFamily}
-						/>
+				<main className="w-10/12 mx-auto py-12 relative ">
+					<div className="md:flex md:flex-row md:flex-wrap md:gap-4 md:justify-start w-full">
+						<section className="w-2/5">
+							<SelectionMenu
+								data={chords}
+								boxClickFn={addToList}
+								changeFn={changeFamily}
+							/>
 
-						<article className="h-36">
-							<h2 className="font-serif text-left text-navy text-xl w-full px-2">
-								Current Selection:
-							</h2>
-							<div className="flex overflow-scroll">
-								{list.map((chord, i) => {
-									return (
-										<ChordBox
-											chordName={chord.cName}
-											clickFn={null}
-											key={`${chord.cName}_${i}_selection`}
-										/>
-									);
-								})}
-							</div>
-						</article>
+							<article className="h-36 md:w-1/2">
+								<h2 className="font-serif text-left text-navy text-xl w-full px-2">
+									Current Selection:
+								</h2>
+								<div className="flex overflow-auto gap-2">
+									{list.map((chord, i) => {
+										return (
+											<ChordBox
+												chordName={
+													chord.cName
+												}
+												clickFn={null}
+												key={`${chord.cName}_${i}_selection`}
+											/>
+										);
+									})}
+								</div>
+							</article>
 
-						<section className="font-serif text-navy text-xl flex flex-col">
-							<label htmlFor="ordered">
-								<input
-									type="radio"
-									name="order-select"
-									id="ordered"
-									className="mr-4"
-									onClick={() => setOrder('ordered')}
-								/>
-								<p className="inline">Ordered</p>
-							</label>
-							<label htmlFor="randomized">
-								<input
-									type="radio"
-									name="order-select"
-									id="randomized"
-									className="mr-4"
-									onClick={() => setOrder('random')}
-								/>
-								<p className="inline">Randomized</p>
-							</label>
+							<article className="font-serif text-navy text-xl flex flex-col">
+								<label htmlFor="ordered">
+									<input
+										type="radio"
+										name="order-select"
+										id="ordered"
+										className="mr-4"
+										onClick={() =>
+											setOrder('ordered')
+										}
+									/>
+									<p className="inline">Ordered</p>
+								</label>
+								<label htmlFor="randomized">
+									<input
+										type="radio"
+										name="order-select"
+										id="randomized"
+										className="mr-4"
+										onClick={() =>
+											setOrder('random')
+										}
+									/>
+									<p className="inline">
+										Randomized
+									</p>
+								</label>
 
-							<label htmlFor="interval">
-								Time Interval:
-							</label>
-							<select
-								name="interval"
-								id="interval"
-								className="bg-sand text-navy w-2/5 h-8 my-2 font-serif text-lg"
-								onChange={e => {
-									setTimeInt(e.target.value);
+								<label htmlFor="interval">
+									Time Interval:
+								</label>
+								<select
+									name="interval"
+									id="interval"
+									className="bg-sand text-navy w-2/5 h-8 my-2 font-serif text-lg"
+									onChange={e => {
+										setTimeInt(e.target.value);
+									}}
+								>
+									<option value={5000}>5s</option>
+									<option value={4000}>4s</option>
+									<option value={3000}>3s</option>
+									<option value={2000}>2s</option>
+									<option value={1000}>1s</option>
+									<option value={500}>0.5s</option>
+									<option value={250}>0.25s</option>
+									<option value={100}>0.1s</option>
+								</select>
+							</article>
+						</section>
+						<section className="w-1/5">
+							<button
+								className="font-serif text-navy border-navy border-4 bg-sand text-xl rounded-md h-10 w-2/5"
+								onClick={() => {
+									if (list.length > 0) {
+										setPracticing(true);
+										if (order === 'ordered') {
+											orderedCycle();
+										} else {
+											randomCycle();
+										}
+									} else {
+										setPracticing(false);
+									}
 								}}
 							>
-								<option value={5000}>5s</option>
-								<option value={4000}>4s</option>
-								<option value={3000}>3s</option>
-								<option value={2000}>2s</option>
-								<option value={1000}>1s</option>
-								<option value={500}>0.5s</option>
-								<option value={250}>0.25s</option>
-								<option value={100}>0.1s</option>
-							</select>
-						</section>
+								Go!
+							</button>
 
-						<button
-							className="font-serif text-navy border-navy border-4 bg-sand text-xl rounded-md h-10 w-2/5"
-							onClick={() => {
-								if (list.length > 0) {
-									setPracticing(true);
-									if (order === 'ordered') {
-										orderedCycle();
-									} else {
-										randomCycle();
-									}
-								} else {
-									setPracticing(false);
+							<button
+								className="font-serif text-rose-800 border-rose-800 border-4 bg-white text-xl rounded-md h-10 w-2/5 ml-12"
+								onClick={() => {
+									setList([]);
+								}}
+								disabled={
+									list.length > 0 ? false : true
 								}
-							}}
-						>
-							Go!
-						</button>
-
-						<button
-							className="font-serif text-rose-800 border-rose-800 border-4 bg-white text-xl rounded-md h-10 w-2/5 ml-12"
-							onClick={() => {
-								setList([]);
-							}}
-							disabled={list.length > 0 ? false : true}
-						>
-							Clear
-						</button>
-					</section>
+							>
+								Clear
+							</button>
+						</section>
+					</div>
 				</main>
 			)}
 		</>

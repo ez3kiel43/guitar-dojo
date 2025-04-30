@@ -25,7 +25,7 @@ export default function SelectionMenu({ data, boxClickFn, changeFn }) {
 				<option value={'f'}>F</option>
 				<option value={'g'}>G</option>
 			</select>
-			<article className="flex justify-start flex-wrap">
+			<article className="flex w-full overflow-x-auto gap-1">
 				{data.map((chord, i) => {
 					return (
 						<ChordBox

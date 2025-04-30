@@ -34,7 +34,7 @@ export default function LearnChords() {
 
 	return (
 		<>
-			<main className="w-full mx-auto py-12 overflow-hidden max-w-sm md:max-w-full">
+			<main className="w-full mx-auto py-12 max-w-sm md:max-w-full">
 				<section className="md:flex md:w-full">
 					<article className="w-3/5 mx-auto ">
 						<ChordTemplate
