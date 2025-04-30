@@ -11,7 +11,7 @@
 - ⏱️ **Time Trial** – Practice chord transitions with a timed challenge.
 - 💻 **Built with**:
   - Next.js
-  - Tailwind CSS (or your chosen styling solution)
+  - Tailwind CSS
   - Deployed with [Vercel](https://vercel.com)
 
 ---
