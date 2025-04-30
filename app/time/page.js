@@ -131,7 +131,7 @@ export default function TimeTrial() {
 			) : (
 				<main className="w-10/12 mx-auto py-12 relative ">
 					<div className="md:flex md:flex-row md:flex-wrap md:gap-4 md:justify-start w-full">
-						<section className="w-2/5">
+						<section className="md:w-2/5">
 							<SelectionMenu
 								data={chords}
 								boxClickFn={addToList}
@@ -207,7 +207,7 @@ export default function TimeTrial() {
 								</select>
 							</article>
 						</section>
-						<section className="w-1/5">
+						<section className="md:w-1/5">
 							<button
 								className="font-serif text-navy border-navy border-4 bg-sand text-xl rounded-md h-10 w-2/5"
 								onClick={() => {
