@@ -3,7 +3,6 @@ import './globals.css';
 import AppMenu from '../components/AppMenu';
 import AppHeader from '../components/AppHeader';
 import Image from 'next/image';
-import { AuthProvider } from '@/context/AuthContext';
 
 const solway = Solway({
 	variable: '--font-solway',
@@ -26,7 +25,7 @@ export default async function RootLayout({ children }) {
 				className={`${solway.variable}  antialiased bg-white max-h-screen w-screen overflow-hidden`}
 			>
 				<AppHeader></AppHeader>
-				<AuthProvider>{children}</AuthProvider>
+				{children}
 				<footer className="bg-navy h-28 fixed bottom-0 w-screen">
 					<Image
 						src="/guitar_dojo_logo.png"

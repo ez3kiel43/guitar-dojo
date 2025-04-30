@@ -4,11 +4,8 @@ import ChordBox from '@/components/ChordBox';
 import { useState } from 'react';
 import Info from '@/lib/chords.json';
 import ChordTemplate from '@/components/ChordTemplate';
-import { useAuth } from '@/context/AuthContext';
-import supabase from '@/lib/supabase';
 
 export default function TimeTrial() {
-	const { session, loading } = useAuth();
 	const [list, setList] = useState([]);
 	const [chords, setChords] = useState([
 		{ cName: 'A', strings: [-1, 0, 2, 2, 2, 0], fret: 0 },
@@ -36,37 +33,15 @@ export default function TimeTrial() {
 		}
 	};
 
-	const changeFamily = async letter => {
+	const changeFamily = letter => {
 		let tempArr = [];
-		if (letter == 'custom') {
-			// console.log(session.user.id);
-			const { data, error } = await supabase
-				.from('chords')
-				.select('*')
-				.eq('user_id', session.user.id);
 
-			if (error) {
-				alert(error.message);
+		Info.map(c => {
+			if (c.cName[0] === letter.toUpperCase()) {
+				tempArr.push(c);
 			}
+		});
 
-			if (data) {
-				// console.log(data);
-				data.forEach(c => {
-					// console.log(c);
-					tempArr.push({
-						cName: c.chord_name,
-						strings: c.strings,
-						fret: c.fret,
-					});
-				});
-			}
-		} else {
-			Info.map(c => {
-				if (c.cName[0] === letter.toUpperCase()) {
-					tempArr.push(c);
-				}
-			});
-		}
 		setChords(tempArr);
 	};
 
@@ -160,7 +135,6 @@ export default function TimeTrial() {
 							data={chords}
 							boxClickFn={addToList}
 							changeFn={changeFamily}
-							isUser={session != null}
 						/>
 
 						<article className="h-36">

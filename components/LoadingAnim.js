@@ -9,7 +9,7 @@ export default function LoadingAnimation() {
 				height={100}
 				alt="Guitar Dojo Logo"
 			/>
-			<p>Loading...</p>
+			<p className="text-navy font-serif text-lg">Loading...</p>
 		</div>
 	);
 }

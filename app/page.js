@@ -4,12 +4,8 @@ import SelectionMenu from '@/components/ChordSelection';
 
 import { useState } from 'react';
 import Info from '@/lib/chords.json';
-import supabase from '@/lib/supabase';
-import { useAuth } from '@/context/AuthContext';
 
 export default function LearnChords() {
-	const { session, loading } = useAuth();
-
 	const [chords, setChords] = useState([
 		{ cName: 'A', strings: [-1, 0, 2, 2, 2, 0], fret: 0 },
 		{ cName: 'Am', strings: [-1, 0, 2, 2, 1, 0], fret: 0 },
@@ -24,38 +20,15 @@ export default function LearnChords() {
 		setCurrentChord(index);
 	};
 
-	const changeFamily = async letter => {
-		setCurrentChord(0);
+	const changeFamily = letter => {
 		let tempArr = [];
-		if (letter == 'custom') {
-			console.log(session.user.id);
-			const { data, error } = await supabase
-				.from('chords')
-				.select('*')
-				.eq('user_id', session.user.id);
 
-			if (error) {
-				alert(error.message);
+		Info.map(c => {
+			if (c.cName[0] === letter.toUpperCase()) {
+				tempArr.push(c);
 			}
+		});
 
-			if (data) {
-				console.log(data);
-				data.forEach(c => {
-					console.log(c);
-					tempArr.push({
-						cName: c.chord_name,
-						strings: c.strings,
-						fret: c.fret,
-					});
-				});
-			}
-		} else {
-			Info.map(c => {
-				if (c.cName[0] === letter.toUpperCase()) {
-					tempArr.push(c);
-				}
-			});
-		}
 		setChords(tempArr);
 	};
 
@@ -77,7 +50,6 @@ export default function LearnChords() {
 							data={chords}
 							changeFn={changeFamily}
 							boxClickFn={changeChord}
-							isUser={session != null}
 						/>
 					</article>
 				</section>
