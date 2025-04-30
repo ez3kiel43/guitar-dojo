@@ -12,6 +12,7 @@ export default function SaveChord({ stringsData }) {
 	const handleSubmit = async e => {
 		if (!session) {
 			alert('must be logged in');
+			return;
 		}
 
 		const user = session.user;

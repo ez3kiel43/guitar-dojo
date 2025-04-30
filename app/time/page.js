@@ -4,8 +4,11 @@ import ChordBox from '@/components/ChordBox';
 import { useState } from 'react';
 import Info from '@/lib/chords.json';
 import ChordTemplate from '@/components/ChordTemplate';
+import { useAuth } from '@/context/AuthContext';
+import supabase from '@/lib/supabase';
 
 export default function TimeTrial() {
+	const { session, loading } = useAuth();
 	const [list, setList] = useState([]);
 	const [chords, setChords] = useState([
 		{ cName: 'A', strings: [-1, 0, 2, 2, 2, 0], fret: 0 },
@@ -20,19 +23,50 @@ export default function TimeTrial() {
 	const [paused, setPaused] = useState(false);
 
 	const addToList = e => {
-		let index = Info.findIndex(c => {
-			return e.target.textContent == c.cName;
-		});
-		setList([...list, Info[index]]);
+		if (chords[0].strings != null) {
+			let index = chords.findIndex(c => {
+				return e.target.textContent == c.cName;
+			});
+			setList([...list, chords[index]]);
+		} else {
+			let index = Info.findIndex(c => {
+				return e.target.textContent == c.cName;
+			});
+			setList([...list, Info[index]]);
+		}
 	};
 
-	const changeFamily = letter => {
+	const changeFamily = async letter => {
 		let tempArr = [];
-		Info.map(c => {
-			if (c.cName[0] === letter.toUpperCase()) {
-				tempArr.push(c);
+		if (letter == 'custom') {
+			// console.log(session.user.id);
+			const { data, error } = await supabase
+				.from('chords')
+				.select('*')
+				.eq('user_id', session.user.id);
+
+			if (error) {
+				alert(error.message);
 			}
-		});
+
+			if (data) {
+				// console.log(data);
+				data.forEach(c => {
+					// console.log(c);
+					tempArr.push({
+						cName: c.chord_name,
+						strings: c.strings,
+						fret: c.fret,
+					});
+				});
+			}
+		} else {
+			Info.map(c => {
+				if (c.cName[0] === letter.toUpperCase()) {
+					tempArr.push(c);
+				}
+			});
+		}
 		setChords(tempArr);
 	};
 
@@ -83,15 +117,30 @@ export default function TimeTrial() {
 						<h3 className="font-serif text-navy text-center text-3xl">
 							{list[currIndex].cName}
 						</h3>
-						<ChordTemplate chordData={list[currIndex]} />
+						<ChordTemplate
+							chordData={list[currIndex].strings}
+						/>
 						<button
 							className="font-serif text-navy border-navy border-4 bg-white text-xl rounded-md h-10 w-2/5"
-							onClick={() => {
-								clearInterval(timer);
-								setPaused(true);
-							}}
+							onClick={
+								paused
+									? () => {
+											if (
+												order === 'ordered'
+											) {
+												orderedCycle();
+											} else {
+												randomCycle();
+											}
+											setPaused(false);
+									  }
+									: () => {
+											clearInterval(timer);
+											setPaused(true);
+									  }
+							}
 						>
-							PAUSE
+							{paused ? 'PLAY' : 'PAUSE'}
 						</button>
 						<button
 							className="font-serif text-rose-800 border-rose-800 border-4 bg-white text-xl rounded-md h-10 w-2/5 ml-12"
@@ -111,6 +160,7 @@ export default function TimeTrial() {
 							data={chords}
 							boxClickFn={addToList}
 							changeFn={changeFamily}
+							isUser={session != null}
 						/>
 
 						<article className="h-36">
@@ -197,6 +247,7 @@ export default function TimeTrial() {
 							onClick={() => {
 								setList([]);
 							}}
+							disabled={list.length > 0 ? false : true}
 						>
 							Clear
 						</button>

@@ -77,6 +77,7 @@ export default function LearnChords() {
 							data={chords}
 							changeFn={changeFamily}
 							boxClickFn={changeChord}
+							isUser={session != null}
 						/>
 					</article>
 				</section>
