@@ -1,7 +1,7 @@
 import { Solway } from 'next/font/google';
 import './globals.css';
-import Menu from '@/components/Menu';
-import Header from '@/components/Header';
+import Menu from '../components/Menu';
+import Header from './../components/Header';
 import Image from 'next/image';
 import { AuthProvider } from '@/context/AuthContext';
 
