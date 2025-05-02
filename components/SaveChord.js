@@ -1,12 +1,12 @@
 'use client';
 
-export default function SaveChord({ stringsData }) {
-	const handleSubmit = e => {
-		e.preventDefault();
-	};
-
+export default function SaveChord() {
 	return (
-		<form action={handleSubmit}>
+		<form
+			onSubmit={e => {
+				e.preventDefault();
+			}}
+		>
 			<label
 				htmlFor="chord_name"
 				className="block w-9/12 mt-2 text-navy"
