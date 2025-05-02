@@ -11,7 +11,7 @@
 - ⏱️ **Time Trial** – Practice chord transitions with a timed challenge.
 - 💻 **Built with**:
   - Next.js
-  - Tailwind CSS (or your chosen styling solution)
+  - Tailwind CSS
   - Deployed with [Vercel](https://vercel.com)
 
 ---
@@ -52,7 +52,7 @@ Open `http://localhost:3000` in your browser.
 
 ## 🧹 Removed Features
 
-This project originally included user accounts and Supabase authentication, but has since been simplified to focus on the core chord training experience. You can still view older versions of the app in Git history or the `with-auth-backup` branch.
+This project originally included user accounts and Supabase authentication, but has since been simplified to focus on the core chord training experience. You can still view older versions of the app in Git history.
 
 ---
 
@@ -65,12 +65,6 @@ This project originally included user accounts and Supabase authentication, but 
 
 ---
 
-## 📸 Screenshots
-
-> _You can add screenshots here once the UI is polished._
-
----
-
 ## 🧑‍💻 Author
 
-Created by [Your Name](https://your-portfolio-link.com) as a portfolio project. Contributions welcome!
+Created by Ezra Evans (https://ezraevans.ca) as a portfolio project. Contributions welcome!
