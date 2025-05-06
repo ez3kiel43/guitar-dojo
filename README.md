@@ -32,7 +32,7 @@
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/your-username/guitar-dojo.git
+git clone https://github.com/ez3kiel43/guitar-dojo.git
 cd guitar-dojo
 ```
 
