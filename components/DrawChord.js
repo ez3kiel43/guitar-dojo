@@ -10,7 +10,7 @@ export default function RenderSymbols({ strings }) {
 								8 + i * 40
 							},2l28,28`}
 							fill="none"
-							stroke="#3b3561"
+							stroke="#223146"
 							strokeWidth="4"
 							key={i}
 						/>
@@ -22,7 +22,7 @@ export default function RenderSymbols({ strings }) {
 							cy="16.5"
 							r="12"
 							fill="none"
-							stroke="#3b3561"
+							stroke="#223146"
 							strokeWidth="4"
 							key={i}
 						/>
@@ -33,7 +33,7 @@ export default function RenderSymbols({ strings }) {
 							cx={`${i * 40 + 22}`}
 							cy={`${string * 60 + 6}`}
 							r="14"
-							fill="#3b3561"
+							fill="#223146"
 							key={i}
 						/>
 					);

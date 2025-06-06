@@ -16,7 +16,7 @@ export default function ChordTemplate({ clickFn, chordData }) {
 				x2="224"
 				y2="36"
 				fill="none"
-				stroke="#3b3561"
+				stroke="#223146"
 				strokeWidth="8"
 			/>
 			<line
@@ -25,7 +25,7 @@ export default function ChordTemplate({ clickFn, chordData }) {
 				x2="224"
 				y2="98"
 				fill="none"
-				stroke="#3b3561"
+				stroke="#223146"
 				strokeWidth="4"
 			/>
 			<line
@@ -34,7 +34,7 @@ export default function ChordTemplate({ clickFn, chordData }) {
 				x2="224"
 				y2="158"
 				fill="none"
-				stroke="#3b3561"
+				stroke="#223146"
 				strokeWidth="4"
 			/>
 			<line
@@ -43,7 +43,7 @@ export default function ChordTemplate({ clickFn, chordData }) {
 				x2="224"
 				y2="218"
 				fill="none"
-				stroke="#3b3561"
+				stroke="#223146"
 				strokeWidth="4"
 			/>
 			<line
@@ -52,7 +52,7 @@ export default function ChordTemplate({ clickFn, chordData }) {
 				x2="224"
 				y2="278"
 				fill="none"
-				stroke="#3b3561"
+				stroke="#223146"
 				strokeWidth="4"
 			/>
 			<line
@@ -61,7 +61,7 @@ export default function ChordTemplate({ clickFn, chordData }) {
 				x2="224"
 				y2="338"
 				fill="none"
-				stroke="#3b3561"
+				stroke="#223146"
 				strokeWidth="4"
 			/>
 			<line
@@ -70,7 +70,7 @@ export default function ChordTemplate({ clickFn, chordData }) {
 				x2="182"
 				y2="356"
 				fill="none"
-				stroke="#3b3561"
+				stroke="#223146"
 			/>
 			<line
 				x1="222"
@@ -78,7 +78,7 @@ export default function ChordTemplate({ clickFn, chordData }) {
 				x2="222"
 				y2="356"
 				fill="none"
-				stroke="#3b3561"
+				stroke="#223146"
 			/>
 			<line
 				x1="102"
@@ -86,7 +86,7 @@ export default function ChordTemplate({ clickFn, chordData }) {
 				x2="102"
 				y2="356"
 				fill="none"
-				stroke="#3b3561"
+				stroke="#223146"
 			/>
 			<line
 				x1="62"
@@ -94,7 +94,7 @@ export default function ChordTemplate({ clickFn, chordData }) {
 				x2="62"
 				y2="356"
 				fill="none"
-				stroke="#3b3561"
+				stroke="#223146"
 			/>
 			<line
 				x1="22"
@@ -102,7 +102,7 @@ export default function ChordTemplate({ clickFn, chordData }) {
 				x2="22"
 				y2="356"
 				fill="none"
-				stroke="#3b3561"
+				stroke="#223146"
 			/>
 			<line
 				x1="142"
@@ -110,7 +110,7 @@ export default function ChordTemplate({ clickFn, chordData }) {
 				x2="142"
 				y2="356"
 				fill="none"
-				stroke="#3b3561"
+				stroke="#223146"
 			/>
 			<RenderSymbols strings={chordData} />
 		</svg>

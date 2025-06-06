@@ -9,7 +9,7 @@ export default {
 		extend: {
 			colors: {
 				sand: '#E7D7C1',
-				navy: '#3B3561',
+				navy: '#223146',
 				red: '#C1292E',
 			},
 			fontFamily: {
