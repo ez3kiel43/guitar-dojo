@@ -26,7 +26,7 @@ export default async function RootLayout({ children }) {
 			>
 				<AppHeader></AppHeader>
 				{children}
-				<footer className="bg-navy h-28 fixed bottom-0 w-screen">
+				<footer className="bg-navy h-20 fixed bottom-0 w-screen">
 					<Image
 						src="/logo.svg"
 						width={175}

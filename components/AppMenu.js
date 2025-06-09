@@ -19,7 +19,7 @@ export default function AppMenu() {
 
 	return (
 		<>
-			<button className="absolute bottom-20 right-4 bg-sand rounded-full w-16 aspect-square z-20">
+			<button className="absolute bottom-16 right-4 bg-sand rounded-full w-12 aspect-square z-20">
 				<Image
 					src={!isOpen ? `/open_btn.svg` : `/close_btn.svg`}
 					width={100}
@@ -30,7 +30,7 @@ export default function AppMenu() {
 				></Image>
 			</button>
 			<nav
-				className={`absolute flex flex-col-reverse bg-transparent gap-4 font-serif text-xl right-4 bottom-40 z-20 ${
+				className={`absolute flex flex-col-reverse bg-transparent gap-4 font-serif text-lg right-4 bottom-36 z-20 ${
 					isOpen ? 'visible' : 'invisible'
 				}`}
 			>

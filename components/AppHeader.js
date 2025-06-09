@@ -19,8 +19,8 @@ export default function AppHeader() {
 	};
 
 	return (
-		<header className="bg-sand h-16 font-serif w-screen text-navy p-4">
-			<h2 className="text-2xl">{getHeaderText()}</h2>
+		<header className="bg-sand h-12 font-serif w-screen text-navy p-4">
+			<h2 className="text-xl">{getHeaderText()}</h2>
 		</header>
 	);
 }
