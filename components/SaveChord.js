@@ -35,7 +35,7 @@ export default function SaveChord() {
 			<input
 				type="submit"
 				value={'Save Chord'}
-				className="my-3 border-navy border-2 rounded-md text-navy p-2 font-serif bg-sand"
+				className="my-3 border-navy border-2 rounded-md text-navy p-2 font-serif bg-white"
 			/>
 		</form>
 	);

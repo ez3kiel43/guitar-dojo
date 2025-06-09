@@ -12,7 +12,7 @@ export default function SelectionMenu({ data, boxClickFn, changeFn }) {
 			<select
 				id="chord-selection"
 				name="chord-selection"
-				className="bg-sand text-navy w-2/5 h-8 m-2 font-serif text-lg"
+				className="bg-white text-navy w-2/5 h-8 m-2 font-serif text-lg"
 				onChange={e => {
 					changeFn(e.target.value);
 				}}

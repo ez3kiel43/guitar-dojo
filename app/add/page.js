@@ -54,11 +54,11 @@ export default function AddChords() {
 	};
 
 	return (
-		<main className="w-9/12 mx-auto md:flex">
+		<>
 			<section className="my-4">
 				<ChordTemplate clickFn={handleClick} chordData={strings} />
 			</section>
 			<SaveChord stringsData={strings} />
-		</main>
+		</>
 	);
 }

@@ -22,10 +22,10 @@ export default async function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body
-				className={`${solway.variable}  antialiased bg-white max-h-screen w-screen overflow-hidden`}
+				className={`${solway.variable}  antialiased bg-grain bg-no-repeat bg-center h-screen w-screen overflow-hidden flex flex-col justify-between`}
 			>
 				<AppHeader></AppHeader>
-				{children}
+				<main className="px-4 py-6 h-full">{children}</main>
 				<footer className="bg-navy h-20 fixed bottom-0 w-screen">
 					<Image
 						src="/logo.svg"

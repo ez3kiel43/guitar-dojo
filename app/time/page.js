@@ -87,7 +87,7 @@ export default function TimeTrial() {
 	return (
 		<>
 			{practicing ? (
-				<main className="w-10/12 mx-auto py-12 overflow-hidden relative md:flex">
+				<>
 					<section>
 						<h3 className="font-serif text-navy text-center text-3xl">
 							{list[currIndex].cName}
@@ -127,9 +127,9 @@ export default function TimeTrial() {
 							STOP
 						</button>
 					</section>
-				</main>
+				</>
 			) : (
-				<main className="w-10/12 mx-auto py-12 relative ">
+				<>
 					<div className="md:flex md:flex-row md:flex-wrap md:gap-4 md:justify-start w-full">
 						<section className="md:w-2/5">
 							<SelectionMenu
@@ -191,7 +191,7 @@ export default function TimeTrial() {
 								<select
 									name="interval"
 									id="interval"
-									className="bg-sand text-navy w-2/5 h-8 my-2 font-serif text-lg"
+									className="bg-white text-navy w-2/5 h-8 my-2 font-serif text-lg"
 									onChange={e => {
 										setTimeInt(e.target.value);
 									}}
@@ -209,7 +209,7 @@ export default function TimeTrial() {
 						</section>
 						<section className="md:w-1/5">
 							<button
-								className="font-serif text-navy border-navy border-4 bg-sand text-xl rounded-md h-10 w-2/5"
+								className="font-serif text-navy border-navy border-4 bg-white text-xl rounded-md h-10 w-2/5"
 								onClick={() => {
 									if (list.length > 0) {
 										setPracticing(true);
@@ -239,7 +239,7 @@ export default function TimeTrial() {
 							</button>
 						</section>
 					</div>
-				</main>
+				</>
 			)}
 		</>
 	);

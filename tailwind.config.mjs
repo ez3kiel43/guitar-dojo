@@ -15,6 +15,9 @@ export default {
 			fontFamily: {
 				serif: 'var(--font-solway)',
 			},
+			backgroundImage: {
+				grain: "url('/wood-grain-bg.png')",
+			},
 		},
 	},
 	plugins: [],
