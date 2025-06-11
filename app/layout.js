@@ -27,7 +27,7 @@ export default async function RootLayout({ children }) {
 			/>
 
 			<body
-				className={`${solway.variable}  antialiased bg-grain bg-no-repeat md:bg-cover bg-center h-full w-full overflow-hidden flex flex-col justify-between`}
+				className={`${solway.variable}  antialiased bg-grain bg-no-repeat md:bg-cover bg-center h-full w-full flex flex-col justify-between`}
 			>
 				<AppHeader></AppHeader>
 				<main className="px-4 py-6 h-full">{children}</main>
