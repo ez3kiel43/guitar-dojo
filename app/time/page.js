@@ -88,7 +88,7 @@ export default function TimeTrial() {
 		<>
 			{practicing ? (
 				<>
-					<section>
+					<section className="h-5/6">
 						<h3 className="font-serif text-navy text-center text-3xl">
 							{list[currIndex].cName}
 						</h3>

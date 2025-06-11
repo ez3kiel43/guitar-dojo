@@ -21,8 +21,13 @@ export const metadata = {
 export default async function RootLayout({ children }) {
 	return (
 		<html lang="en">
+			<meta
+				name="viewport"
+				content="width=device-width, initial-scale=1.0"
+			/>
+
 			<body
-				className={`${solway.variable}  antialiased bg-grain bg-no-repeat bg-center h-screen w-screen overflow-hidden flex flex-col justify-between`}
+				className={`${solway.variable}  antialiased bg-grain bg-no-repeat md:bg-cover bg-center h-full w-full overflow-hidden flex flex-col justify-between`}
 			>
 				<AppHeader></AppHeader>
 				<main className="px-4 py-6 h-full">{children}</main>

@@ -4,6 +4,7 @@ export default function SaveChord() {
 			onSubmit={e => {
 				e.preventDefault();
 			}}
+			className="md:w-2/5"
 		>
 			<label
 				htmlFor="chord_name"
